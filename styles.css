@@ -40,10 +40,11 @@ h2 { font-size: 1.4rem; }
   background: var(--paper); border: 1px solid var(--line); border-radius: 0.6rem; padding: 1.25rem;
 }
 .choice-card { display: flex; flex-direction: column; align-items: flex-start; }
-.choice-card h2 { margin: 0; }
+.choice-card h2, .choice-card h3 { margin: 0; }
 .choice-card p { flex: 1; }
 .privacy-note { max-width: 55rem; }
 .privacy-note h2 { margin: 0; }
+.home-resources { margin-block: 2rem; }
 .disclaimer { margin-top: 2rem; font-weight: 700; }
 .view-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
 .view-heading h1 { margin-bottom: 0; }
@@ -94,6 +95,9 @@ th, td { padding: 0.55rem; border-bottom: 1px solid var(--line); vertical-align:
 .answer-selected-incorrect { background: var(--error-bg); }
 .status-text { display: inline-block; font-weight: 700; }
 .flashcard-tools { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-block: 1.25rem; }
+.direction-options { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; border: 0; padding: 0; margin: 0; }
+.direction-options legend { float: left; margin-right: 0.75rem; font-weight: 700; }
+.direction-options label { display: inline-flex; align-items: center; gap: 0.35rem; }
 select { min-height: 2.8rem; max-width: 100%; padding: 0.45rem 2rem 0.45rem 0.6rem; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 0.3rem; }
 .flashcard { min-height: 18rem; display: flex; flex-direction: column; justify-content: center; margin-block: 1rem; }
 .flashcard .eyebrow { align-self: flex-start; }

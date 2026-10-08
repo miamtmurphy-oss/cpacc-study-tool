@@ -11,8 +11,8 @@ Open the [CPACC Study Tool website](https://miamtmurphy-oss.github.io/cpacc-stud
 ## Features and privacy
 
 - Untimed 50-question exam with shuffled choices, navigation, editable answers, review flags, score by domain, explanations, and an incorrect-only review filter.
-- 75 flashcards with domain filters, shuffle, flip, keyboard-accessible controls, and a selectable Term → Definition / Definition → Term direction saved in this browser.
-- A CPACC Study Resources section with links to official IAAP sample questions, the certification content outline, and the October 2023 Body of Knowledge. External resources open in a new tab.
+- 75 flashcards with domain filters, shuffle, flip, keyboard-accessible controls, and a selectable Term First / Definition First direction saved in this browser.
+- A CPACC Study Resources section directly on the homepage with links to official IAAP sample questions, the certification content outline, and the October 2023 Body of Knowledge. External resources open in a new tab.
 - Completed attempts are stored only in this browser when local storage is available. No results are uploaded; the app has no analytics or score-collection network requests. Browser storage restrictions, clearing data, or switching browsers may make previous results unavailable.
 - If storage is unavailable or full, the app discloses that results cannot be saved.
 
