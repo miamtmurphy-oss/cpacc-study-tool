@@ -2,14 +2,15 @@
   'use strict';
 
   var STORAGE_KEY = 'cpacc-study-tool-attempts-v1';
+  var CARD_DIRECTION_KEY = 'cpacc-study-tool-card-direction-v1';
   var domains = window.CPACC_DOMAINS;
   var questions = window.CPACC_QUESTIONS;
   var cards = window.CPACC_FLASHCARDS;
   var state = { index: 0, answers: [], flags: [], optionOrders: [], completed: false };
-  var cardState = { deck: cards.slice(), index: 0, flipped: false, domain: 'all' };
+  var cardState = { deck: cards.slice(), index: 0, flipped: false, domain: 'all', direction: 'term-definition' };
   var sessionAttempts = [];
   var storage = { available: false, corrupt: false, message: '' };
-  var views = ['home', 'exam', 'results', 'flashcards'];
+  var views = ['home', 'exam', 'results', 'flashcards', 'resources'];
   var el = function (id) { return document.getElementById(id); };
 
   function checkStorage() {
@@ -75,7 +76,9 @@
   }
 
   function showView(name) {
-    views.forEach(function (view) { el(view + '-view').hidden = view !== name; });
+    views.forEach(function (view) {
+      el(view === 'resources' ? 'resources' : view + '-view').hidden = view !== name;
+    });
     if (name === 'exam') {
       if (!state.completed) renderQuestion();
       el('exam-title').focus();
@@ -84,6 +87,8 @@
       el('flashcards-title').focus();
     } else if (name === 'results') {
       el('results-title').focus();
+    } else if (name === 'resources') {
+      el('resources-title').focus();
     } else if (name === 'home') {
       el('home-title').focus();
     }
@@ -92,7 +97,10 @@
 
   function setChoiceView(event) {
     var target = event.target.closest('[data-view]');
-    if (target) showView(target.getAttribute('data-view'));
+    if (target) {
+      event.preventDefault();
+      showView(target.getAttribute('data-view'));
+    }
   }
 
   function renderQuestion() {
@@ -328,6 +336,19 @@
       option.textContent = item[1];
       select.appendChild(option);
     });
+    var savedDirection;
+    if (storage.available) {
+      try {
+        savedDirection = window.localStorage.getItem(CARD_DIRECTION_KEY);
+      } catch (error) {
+        el('card-preference-note').textContent = 'Card direction preference could not be read from this browser.';
+        el('card-preference-note').hidden = false;
+      }
+    }
+    if (savedDirection === 'definition-term' || savedDirection === 'term-definition') {
+      cardState.direction = savedDirection;
+    }
+    el('card-direction').value = cardState.direction;
   }
 
   function createOptionOrders() {
@@ -346,12 +367,15 @@
   function renderCard() {
     var card = cardState.deck[cardState.index];
     if (!card) return;
+    var showTerm = cardState.flipped
+      ? cardState.direction === 'definition-term'
+      : cardState.direction === 'term-definition';
     el('card-domain').textContent = card.domain;
-    el('card-side-label').textContent = cardState.flipped ? 'Definition' : 'Term';
-    el('card-content').textContent = cardState.flipped ? card.definition : card.term;
+    el('card-side-label').textContent = showTerm ? 'Term' : 'Definition';
+    el('card-content').textContent = showTerm ? card.term : card.definition;
     el('card-progress').textContent = 'Card ' + (cardState.index + 1) + ' of ' + cardState.deck.length;
     el('flip-card').setAttribute('aria-pressed', String(cardState.flipped));
-    el('flip-card').textContent = cardState.flipped ? 'Show Term' : 'Flip Card';
+    el('flip-card').textContent = cardState.flipped ? 'Show ' + (showTerm ? 'Definition' : 'Term') : 'Flip Card';
     el('previous-card').disabled = cardState.index === 0;
     el('next-card').disabled = cardState.index === cardState.deck.length - 1;
   }
@@ -385,6 +409,25 @@
   });
   el('submit-exam').addEventListener('click', submitExam);
   el('domain-filter').addEventListener('change', function (event) { updateDeck(event.target.value, false); });
+  el('card-direction').addEventListener('change', function (event) {
+    cardState.direction = event.target.value;
+    cardState.flipped = false;
+    var note = el('card-preference-note');
+    note.hidden = true;
+    if (storage.available) {
+      try {
+        window.localStorage.setItem(CARD_DIRECTION_KEY, cardState.direction);
+      } catch (error) {
+        note.textContent = 'This card direction will be used for this visit, but the browser could not save the preference.';
+        note.hidden = false;
+      }
+    } else {
+      note.textContent = 'This card direction will be used for this visit; browser storage is unavailable to save the preference.';
+      note.hidden = false;
+    }
+    renderCard();
+    announce(el('card-side-label').textContent + ': ' + el('card-content').textContent);
+  });
   el('shuffle-cards').addEventListener('click', function () { updateDeck(cardState.domain, true); });
   el('previous-card').addEventListener('click', function () { cardState.index -= 1; cardState.flipped = false; renderCard(); });
   el('next-card').addEventListener('click', function () { cardState.index += 1; cardState.flipped = false; renderCard(); });

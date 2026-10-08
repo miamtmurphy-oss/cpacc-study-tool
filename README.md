@@ -11,7 +11,8 @@ Open the [CPACC Study Tool website](https://miamtmurphy-oss.github.io/cpacc-stud
 ## Features and privacy
 
 - Untimed 50-question exam with shuffled choices, navigation, editable answers, review flags, score by domain, explanations, and an incorrect-only review filter.
-- 75 flashcards with domain filters, shuffle, flip, and keyboard-accessible controls.
+- 75 flashcards with domain filters, shuffle, flip, keyboard-accessible controls, and a selectable Term → Definition / Definition → Term direction saved in this browser.
+- A CPACC Study Resources section with links to official IAAP sample questions, the certification content outline, and the October 2023 Body of Knowledge. External resources open in a new tab.
 - Completed attempts are stored only in this browser when local storage is available. No results are uploaded; the app has no analytics or score-collection network requests. Browser storage restrictions, clearing data, or switching browsers may make previous results unavailable.
 - If storage is unavailable or full, the app discloses that results cannot be saved.
 
@@ -27,8 +28,8 @@ The workflow in `.github/workflows/pages.yml` deploys this repository root to Gi
 
 These IAAP resources informed the subject scope, not the wording of the original questions or cards:
 
-- [CPACC sample exam questions](https://www.accessibilityassociation.org/cpacc-sample-exam-questions) (format and scope only)
-- [CPACC certification content outline](https://www.accessibilityassociation.org/cpacc-certification-content-outline)
-- [CPACC Body of Knowledge](https://www.accessibilityassociation.org/sfsites/c/resource/CPACCBoK)
+- [CPACC Sample Exam Questions](https://www.accessibilityassociation.org/cpacc-sample-exam-questions) — Review the CPACC sample exam questions provided by the International Association of Accessibility Professionals (IAAP). (Format and scope only.)
+- [CPACC Content Outline](https://www.accessibilityassociation.org/cpacc-certification-content-outline) — Review the CPACC certification content outline to better understand the topics and knowledge areas covered by the certification.
+- [IAAP CPACC Body of Knowledge – October 2023](https://www.accessibilityassociation.org/sfsites/c/resource/CPACCBoK) — Access the CPACC Body of Knowledge for more detailed reading and study material.
 
 Consult current official IAAP materials for definitive exam information.
