@@ -10,7 +10,7 @@
   var cardState = { deck: cards.slice(), index: 0, flipped: false, domain: 'all', direction: 'term-definition' };
   var sessionAttempts = [];
   var storage = { available: false, corrupt: false, message: '' };
-  var views = ['home', 'exam', 'results', 'flashcards', 'resources'];
+  var views = ['home', 'exam', 'results', 'flashcards'];
   var el = function (id) { return document.getElementById(id); };
 
   function checkStorage() {
@@ -77,7 +77,7 @@
 
   function showView(name) {
     views.forEach(function (view) {
-      el(view === 'resources' ? 'resources' : view + '-view').hidden = view !== name;
+      el(view + '-view').hidden = view !== name;
     });
     if (name === 'exam') {
       if (!state.completed) renderQuestion();
@@ -87,8 +87,6 @@
       el('flashcards-title').focus();
     } else if (name === 'results') {
       el('results-title').focus();
-    } else if (name === 'resources') {
-      el('resources-title').focus();
     } else if (name === 'home') {
       el('home-title').focus();
     }
@@ -348,7 +346,7 @@
     if (savedDirection === 'definition-term' || savedDirection === 'term-definition') {
       cardState.direction = savedDirection;
     }
-    el('card-direction').value = cardState.direction;
+    document.querySelector('input[name="card-direction"][value="' + cardState.direction + '"]').checked = true;
   }
 
   function createOptionOrders() {
@@ -409,24 +407,26 @@
   });
   el('submit-exam').addEventListener('click', submitExam);
   el('domain-filter').addEventListener('change', function (event) { updateDeck(event.target.value, false); });
-  el('card-direction').addEventListener('change', function (event) {
-    cardState.direction = event.target.value;
-    cardState.flipped = false;
-    var note = el('card-preference-note');
-    note.hidden = true;
-    if (storage.available) {
-      try {
-        window.localStorage.setItem(CARD_DIRECTION_KEY, cardState.direction);
-      } catch (error) {
-        note.textContent = 'This card direction will be used for this visit, but the browser could not save the preference.';
+  document.querySelectorAll('input[name="card-direction"]').forEach(function (radio) {
+    radio.addEventListener('change', function (event) {
+      cardState.direction = event.target.value;
+      cardState.flipped = false;
+      var note = el('card-preference-note');
+      note.hidden = true;
+      if (storage.available) {
+        try {
+          window.localStorage.setItem(CARD_DIRECTION_KEY, cardState.direction);
+        } catch (error) {
+          note.textContent = 'This card direction will be used for this visit, but the browser could not save the preference.';
+          note.hidden = false;
+        }
+      } else {
+        note.textContent = 'This card direction will be used for this visit; browser storage is unavailable to save the preference.';
         note.hidden = false;
       }
-    } else {
-      note.textContent = 'This card direction will be used for this visit; browser storage is unavailable to save the preference.';
-      note.hidden = false;
-    }
-    renderCard();
-    announce(el('card-side-label').textContent + ': ' + el('card-content').textContent);
+      renderCard();
+      announce(el('card-side-label').textContent + ': ' + el('card-content').textContent);
+    });
   });
   el('shuffle-cards').addEventListener('click', function () { updateDeck(cardState.domain, true); });
   el('previous-card').addEventListener('click', function () { cardState.index -= 1; cardState.flipped = false; renderCard(); });

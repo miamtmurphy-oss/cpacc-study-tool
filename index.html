@@ -16,7 +16,6 @@
         <a href="#home" data-view="home">Home</a>
         <button type="button" class="link-button" id="nav-start-exam">Practice exam</button>
         <a href="#flashcards" data-view="flashcards">Flashcards</a>
-        <a href="#resources" data-view="resources">Study resources</a>
         <button type="button" class="link-button" id="previous-results-nav">View Previous Results</button>
       </nav>
     </div>
@@ -42,31 +41,28 @@
         <h2 id="privacy-title">Your privacy</h2>
         <p>Completed exam results are saved only in this browser when local storage is available. They are not sent to a server. Clearing browser data or using a different browser may remove or hide saved results.</p>
       </aside>
+      <section class="home-resources" aria-labelledby="home-resources-title">
+        <h2 id="home-resources-title">CPACC Study Resources</h2>
+        <p class="intro">Want to take a break from practice questions and dive deeper into the material? Explore these CPACC resources for additional reading and exam preparation.</p>
+        <div class="choice-grid">
+          <article class="choice-card">
+            <h3>CPACC Sample Exam Questions</h3>
+            <p>Review the official CPACC sample exam questions.</p>
+            <a href="https://www.accessibilityassociation.org/cpacc-sample-exam-questions" target="_blank" rel="noopener noreferrer">View Sample Exam Questions <span class="sr-only">(opens in a new tab)</span></a>
+          </article>
+          <article class="choice-card">
+            <h3>CPACC Content Outline</h3>
+            <p>Explore the CPACC certification content outline and the topics covered by the exam.</p>
+            <a href="https://www.accessibilityassociation.org/cpacc-certification-content-outline" target="_blank" rel="noopener noreferrer">View CPACC Content Outline <span class="sr-only">(opens in a new tab)</span></a>
+          </article>
+          <article class="choice-card">
+            <h3>IAAP CPACC Body of Knowledge – October 2023</h3>
+            <p>Read the CPACC Body of Knowledge for more detailed study and preparation.</p>
+            <a href="https://www.accessibilityassociation.org/sfsites/c/resource/CPACCBoK" target="_blank" rel="noopener noreferrer">Read CPACC Body of Knowledge <span class="sr-only">(opens in a new tab)</span></a>
+          </article>
+        </div>
+      </section>
       <p class="disclaimer">This is an unofficial CPACC study tool and is not affiliated with or endorsed by IAAP.</p>
-    </section>
-
-    <section id="resources" class="view" aria-labelledby="resources-title" hidden>
-      <div class="view-heading">
-        <div><p class="eyebrow">Continue your preparation</p><h1 id="resources-title" tabindex="-1">CPACC Study Resources</h1></div>
-        <button type="button" class="secondary" data-view="home">Back to home</button>
-      </div>
-      <div class="choice-grid">
-        <article class="choice-card">
-          <h2>CPACC Sample Exam Questions</h2>
-          <p>Review the CPACC sample exam questions provided by the International Association of Accessibility Professionals (IAAP).</p>
-          <a href="https://www.accessibilityassociation.org/cpacc-sample-exam-questions" target="_blank" rel="noopener noreferrer">Open CPACC Sample Exam Questions <span class="sr-only">(opens in a new tab)</span></a>
-        </article>
-        <article class="choice-card">
-          <h2>CPACC Content Outline</h2>
-          <p>Review the CPACC certification content outline to better understand the topics and knowledge areas covered by the certification.</p>
-          <a href="https://www.accessibilityassociation.org/cpacc-certification-content-outline" target="_blank" rel="noopener noreferrer">Open CPACC Content Outline <span class="sr-only">(opens in a new tab)</span></a>
-        </article>
-        <article class="choice-card">
-          <h2>IAAP CPACC Body of Knowledge – October 2023</h2>
-          <p>Access the CPACC Body of Knowledge for more detailed reading and study material.</p>
-          <a href="https://www.accessibilityassociation.org/sfsites/c/resource/CPACCBoK" target="_blank" rel="noopener noreferrer">Open IAAP CPACC Body of Knowledge – October 2023 <span class="sr-only">(opens in a new tab)</span></a>
-        </article>
-      </div>
     </section>
 
     <section id="exam-view" class="view" aria-labelledby="exam-title" hidden>
@@ -121,11 +117,11 @@
       <div class="flashcard-tools">
         <label for="domain-filter">Study domain</label>
         <select id="domain-filter"></select>
-        <label for="card-direction">Study direction</label>
-        <select id="card-direction">
-          <option value="term-definition">Term to Definition</option>
-          <option value="definition-term">Definition to Term</option>
-        </select>
+        <fieldset class="direction-options">
+          <legend>Study Direction:</legend>
+          <label><input type="radio" name="card-direction" value="term-definition"> Term First</label>
+          <label><input type="radio" name="card-direction" value="definition-term"> Definition First</label>
+        </fieldset>
         <button type="button" class="secondary" id="shuffle-cards">Shuffle cards</button>
       </div>
       <p id="card-preference-note" class="notice" role="status" hidden></p>
