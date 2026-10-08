@@ -16,6 +16,7 @@
         <a href="#home" data-view="home">Home</a>
         <button type="button" class="link-button" id="nav-start-exam">Practice exam</button>
         <a href="#flashcards" data-view="flashcards">Flashcards</a>
+        <a href="#resources" data-view="resources">Study resources</a>
         <button type="button" class="link-button" id="previous-results-nav">View Previous Results</button>
       </nav>
     </div>
@@ -42,6 +43,30 @@
         <p>Completed exam results are saved only in this browser when local storage is available. They are not sent to a server. Clearing browser data or using a different browser may remove or hide saved results.</p>
       </aside>
       <p class="disclaimer">This is an unofficial CPACC study tool and is not affiliated with or endorsed by IAAP.</p>
+    </section>
+
+    <section id="resources" class="view" aria-labelledby="resources-title" hidden>
+      <div class="view-heading">
+        <div><p class="eyebrow">Continue your preparation</p><h1 id="resources-title" tabindex="-1">CPACC Study Resources</h1></div>
+        <button type="button" class="secondary" data-view="home">Back to home</button>
+      </div>
+      <div class="choice-grid">
+        <article class="choice-card">
+          <h2>CPACC Sample Exam Questions</h2>
+          <p>Review the CPACC sample exam questions provided by the International Association of Accessibility Professionals (IAAP).</p>
+          <a href="https://www.accessibilityassociation.org/cpacc-sample-exam-questions" target="_blank" rel="noopener noreferrer">Open CPACC Sample Exam Questions <span class="sr-only">(opens in a new tab)</span></a>
+        </article>
+        <article class="choice-card">
+          <h2>CPACC Content Outline</h2>
+          <p>Review the CPACC certification content outline to better understand the topics and knowledge areas covered by the certification.</p>
+          <a href="https://www.accessibilityassociation.org/cpacc-certification-content-outline" target="_blank" rel="noopener noreferrer">Open CPACC Content Outline <span class="sr-only">(opens in a new tab)</span></a>
+        </article>
+        <article class="choice-card">
+          <h2>IAAP CPACC Body of Knowledge – October 2023</h2>
+          <p>Access the CPACC Body of Knowledge for more detailed reading and study material.</p>
+          <a href="https://www.accessibilityassociation.org/sfsites/c/resource/CPACCBoK" target="_blank" rel="noopener noreferrer">Open IAAP CPACC Body of Knowledge – October 2023 <span class="sr-only">(opens in a new tab)</span></a>
+        </article>
+      </div>
     </section>
 
     <section id="exam-view" class="view" aria-labelledby="exam-title" hidden>
@@ -96,8 +121,14 @@
       <div class="flashcard-tools">
         <label for="domain-filter">Study domain</label>
         <select id="domain-filter"></select>
+        <label for="card-direction">Study direction</label>
+        <select id="card-direction">
+          <option value="term-definition">Term to Definition</option>
+          <option value="definition-term">Definition to Term</option>
+        </select>
         <button type="button" class="secondary" id="shuffle-cards">Shuffle cards</button>
       </div>
+      <p id="card-preference-note" class="notice" role="status" hidden></p>
       <p id="card-progress" class="progress-label" aria-live="polite"></p>
       <article id="flashcard" class="flashcard" aria-labelledby="card-side-label">
         <p id="card-domain" class="eyebrow"></p>
