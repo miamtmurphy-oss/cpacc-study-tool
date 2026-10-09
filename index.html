@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An unofficial, accessible CPACC practice exam and flashcard study tool.">
+  <meta name="description" content="An unofficial, accessible CPACC study site with original questions, flashcards, study modules, and private local progress.">
+  <meta name="theme-color" content="#f2f6f8">
   <title>CPACC Study Tool</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,9 +15,12 @@
       <a class="brand" href="#home" data-view="home">CPACC Study Tool</a>
       <nav aria-label="Main navigation">
         <a href="#home" data-view="home">Home</a>
+        <a href="#learn" data-view="learn">Study modules</a>
+        <a href="#quiz" data-view="quiz">Quick quiz</a>
         <button type="button" class="link-button" id="nav-start-exam">Practice exam</button>
         <a href="#flashcards" data-view="flashcards">Flashcards</a>
-        <button type="button" class="link-button" id="previous-results-nav">View Previous Results</button>
+        <a href="#progress" data-view="progress">Progress</a>
+        <a href="#data" data-view="data">My data</a>
       </nav>
     </div>
   </header>
@@ -24,126 +28,175 @@
     <section id="home-view" class="view" aria-labelledby="home-title">
       <p class="eyebrow">Study at your own pace</p>
       <h1 id="home-title" tabindex="-1">Prepare for the CPACC exam</h1>
-      <p class="intro">Practice accessibility concepts with original questions and review key ideas with study cards. There is no timer, account, or score tracking beyond this browser.</p>
+      <p class="intro">Explore original questions, accessible study cards, topic modules, and practice modes across the CPACC knowledge domains. This independent site works without an account and keeps your results in this browser.</p>
       <div class="choice-grid">
         <article class="choice-card">
           <h2>Practice exam</h2>
-          <p>Answer 50 multiple-choice questions across the CPACC knowledge domains. Review explanations after you submit.</p>
-          <button type="button" class="primary" data-view="exam">Take Practice Exam</button>
+          <p>Choose a 50- or 100-question exam sampled to the 40/40/20 CPACC domain weighting. Optionally use a study timer; it never submits for you.</p>
+          <button type="button" class="primary" id="home-start-exam">Set up a practice exam</button>
+        </article>
+        <article class="choice-card">
+          <h2>Quick quiz</h2>
+          <p>Build a short practice set by topic, domain, or difficulty. Review explanations as you go.</p>
+          <button type="button" class="primary" data-view="quiz">Choose quiz topics</button>
         </article>
         <article class="choice-card">
           <h2>Study flashcards</h2>
-          <p>Review 75 terms and concepts. Shuffle the deck or focus on a knowledge domain.</p>
-          <button type="button" class="primary" data-view="flashcards">Study Flashcards</button>
+          <p>Study the existing 75-card deck, mark familiar terms, and focus by domain or search.</p>
+          <button type="button" class="primary" data-view="flashcards">Study flashcards</button>
+        </article>
+        <article class="choice-card">
+          <h2>Study modules</h2>
+          <p>Browse core concepts, standards, inclusive design, and accessibility program practices.</p>
+          <button type="button" class="secondary" data-view="learn">Browse modules</button>
+        </article>
+        <article class="choice-card">
+          <h2>Review and progress</h2>
+          <p>Return to missed questions, review past attempts, and see local study activity.</p>
+          <button type="button" class="secondary" data-view="progress">View progress</button>
+          <button type="button" class="secondary" id="home-previous-results">View Previous Results</button>
         </article>
       </div>
       <aside class="privacy-note" aria-labelledby="privacy-title">
         <h2 id="privacy-title">Your privacy</h2>
-        <p>Completed exam results are saved only in this browser when local storage is available. They are not sent to a server. Clearing browser data or using a different browser may remove or hide saved results.</p>
+        <p>Exam results and study activity stay in this browser’s local storage. They are not sent to a server. You can export, import, or clear your saved results at any time. Browser storage restrictions, clearing data, or switching browsers may make them unavailable.</p>
       </aside>
       <section class="home-resources" aria-labelledby="home-resources-title">
         <h2 id="home-resources-title">CPACC Study Resources</h2>
         <p class="intro">Want to take a break from practice questions and dive deeper into the material? Explore these CPACC resources for additional reading and exam preparation.</p>
         <div class="choice-grid">
-          <article class="choice-card">
-            <h3>CPACC Sample Exam Questions</h3>
-            <p>Review the official CPACC sample exam questions.</p>
-            <a href="https://www.accessibilityassociation.org/cpacc-sample-exam-questions" target="_blank" rel="noopener noreferrer">View Sample Exam Questions <span class="sr-only">(opens in a new tab)</span></a>
-          </article>
-          <article class="choice-card">
-            <h3>CPACC Content Outline</h3>
-            <p>Explore the CPACC certification content outline and the topics covered by the exam.</p>
-            <a href="https://www.accessibilityassociation.org/cpacc-certification-content-outline" target="_blank" rel="noopener noreferrer">View CPACC Content Outline <span class="sr-only">(opens in a new tab)</span></a>
-          </article>
-          <article class="choice-card">
-            <h3>IAAP CPACC Body of Knowledge – October 2023</h3>
-            <p>Read the CPACC Body of Knowledge for more detailed study and preparation.</p>
-            <a href="https://www.accessibilityassociation.org/sfsites/c/resource/CPACCBoK" target="_blank" rel="noopener noreferrer">Read CPACC Body of Knowledge <span class="sr-only">(opens in a new tab)</span></a>
-          </article>
+          <article class="choice-card"><h3>CPACC Sample Exam Questions</h3><p>Review the official CPACC sample exam questions.</p><a href="https://www.accessibilityassociation.org/cpacc-sample-exam-questions" target="_blank" rel="noopener noreferrer">View Sample Exam Questions <span class="sr-only">(opens in a new tab)</span></a></article>
+          <article class="choice-card"><h3>CPACC Content Outline</h3><p>Explore the CPACC certification content outline and the topics covered by the exam.</p><a href="https://www.accessibilityassociation.org/cpacc-certification-content-outline" target="_blank" rel="noopener noreferrer">View CPACC Content Outline <span class="sr-only">(opens in a new tab)</span></a></article>
+          <article class="choice-card"><h3>IAAP CPACC Body of Knowledge – October 2023</h3><p>Read the CPACC Body of Knowledge for more detailed study and preparation.</p><a href="https://www.accessibilityassociation.org/sfsites/c/resource/CPACCBoK" target="_blank" rel="noopener noreferrer">Read CPACC Body of Knowledge <span class="sr-only">(opens in a new tab)</span></a></article>
         </div>
       </section>
       <p class="disclaimer">This is an unofficial CPACC study tool and is not affiliated with or endorsed by IAAP.</p>
+      <p>All practice questions are original and are not official exam questions.</p>
+    </section>
+
+    <section id="learn-view" class="view" aria-labelledby="learn-title" hidden>
+      <div class="view-heading"><div><p class="eyebrow">Study guide</p><h1 id="learn-title" tabindex="-1">Study modules</h1></div><button type="button" class="secondary" data-view="home">Home</button></div>
+      <p class="intro">Review a topic, then practice with the question bank. The modules are concise orientation, not a replacement for the IAAP Body of Knowledge.</p>
+      <div id="module-list" class="module-grid"></div>
+      <p><a href="#glossary" data-view="glossary">Browse the glossary</a> · <a href="#statistics" data-view="statistics">View sourced statistics</a> · <a href="#resources" data-view="resources">Open references</a></p>
+    </section>
+
+    <section id="quiz-view" class="view" aria-labelledby="quiz-title" hidden>
+      <div class="view-heading"><div><p class="eyebrow">Focused practice</p><h1 id="quiz-title" tabindex="-1">Quick quiz</h1></div><button type="button" class="secondary" data-view="home">Home</button></div>
+      <div id="quiz-setup" class="settings-card">
+        <p>Choose a domain, topic, difficulty, and question count. The quiz is untimed and shows an explanation after each answer.</p>
+        <div class="settings-grid">
+          <label for="quiz-domain">Knowledge domain<select id="quiz-domain"></select></label>
+          <label for="quiz-topic">Topic<select id="quiz-topic"></select></label>
+          <label for="quiz-difficulty">Difficulty<select id="quiz-difficulty"><option value="all">All levels</option><option>Foundational</option><option>Intermediate</option><option>Advanced</option></select></label>
+          <label for="quiz-type">Question type<select id="quiz-type"><option value="all">All types</option><option value="scenario">Scenario questions</option><option value="application">Application questions</option><option value="concept">Concept questions</option><option value="knowledge check">Knowledge checks</option></select></label>
+          <label for="quiz-count">Number of questions<select id="quiz-count"><option value="5">5 questions</option><option value="10" selected>10 questions</option><option value="20">20 questions</option></select></label>
+        </div>
+        <button type="button" class="primary" id="start-quiz">Start quiz</button>
+      </div>
+      <div id="quiz-active" hidden>
+        <div class="progress-row"><p id="quiz-progress" class="progress-label"></p><progress id="quiz-progress-bar" max="10" value="1" aria-label="Quiz progress"></progress></div>
+        <article class="question-card" aria-labelledby="quiz-question-text">
+          <p id="quiz-question-meta" class="eyebrow"></p><h2 id="quiz-question-text" tabindex="-1"></h2>
+          <fieldset id="quiz-options" class="answer-options" aria-labelledby="quiz-question-text"><legend class="sr-only">Choose one answer</legend></fieldset>
+          <div id="quiz-feedback" class="quiz-feedback" role="status" hidden></div>
+        </article>
+        <div class="exam-controls"><button type="button" class="secondary" id="quiz-back">Back to quiz setup</button><button type="button" class="primary" id="quiz-next" disabled>Next question</button></div>
+      </div>
     </section>
 
     <section id="exam-view" class="view" aria-labelledby="exam-title" hidden>
-      <div class="view-heading">
-        <div><p class="eyebrow">50 questions · no time limit</p><h1 id="exam-title" tabindex="-1">Practice exam</h1></div>
-        <button type="button" class="secondary" data-view="home">Back to home</button>
-      </div>
+      <div class="view-heading"><div><p class="eyebrow">Weighted domain practice</p><h1 id="exam-title" tabindex="-1">Practice exam</h1></div><button type="button" class="secondary" data-view="home">Home</button></div>
       <p id="exam-storage-note" class="notice" role="status"></p>
-      <div id="exam-active">
-        <div class="progress-row">
-          <p id="question-progress" class="progress-label"></p>
-          <progress id="question-progress-bar" max="50" value="1" aria-label="Exam progress"></progress>
+      <div id="exam-settings" class="settings-card">
+        <p>Question counts follow the CPACC domain weighting: Domain 1 40%, Domain 2 40%, Domain 3 20%. Questions and answer choices are randomized for each attempt.</p>
+        <div class="settings-grid">
+          <label for="exam-size">Exam length<select id="exam-size"><option value="50">50 questions</option><option value="100">100 questions</option></select></label>
+          <label for="exam-timer">Optional study timer<select id="exam-timer"><option value="0">No timer</option><option value="60">60 minutes</option><option value="120">120 minutes</option></select></label>
         </div>
+        <p class="hint">The optional timer is a study aid, not official IAAP timing. When it reaches zero, your exam stays open and is never submitted automatically.</p>
+        <button type="button" class="primary" id="begin-exam">Start exam</button>
+      </div>
+      <div id="exam-active" hidden>
+        <div class="exam-status-row"><div class="progress-row"><p id="question-progress" class="progress-label"></p><progress id="question-progress-bar" max="50" value="1" aria-label="Exam progress"></progress></div><p id="exam-timer-display" class="timer-display" role="timer" aria-live="off" hidden></p></div>
+        <p id="timer-message" class="notice" role="status" hidden></p>
         <article class="question-card" aria-labelledby="question-text">
-          <p id="question-domain" class="eyebrow"></p>
-          <h2 id="question-text" tabindex="-1"></h2>
-          <fieldset id="answer-options" class="answer-options" aria-labelledby="question-text">
-            <legend class="sr-only">Choose one answer</legend>
-          </fieldset>
+          <p id="question-domain" class="eyebrow"></p><h2 id="question-text" tabindex="-1"></h2>
+          <fieldset id="answer-options" class="answer-options" aria-labelledby="question-text"><legend class="sr-only">Choose one answer</legend></fieldset>
           <button type="button" id="flag-question" class="flag-button" aria-pressed="false">Flag for review</button>
         </article>
-        <div class="exam-controls">
-          <button type="button" class="secondary" id="previous-question">Previous</button>
-          <button type="button" class="primary" id="next-question">Next</button>
-        </div>
-        <details class="question-list">
-          <summary>Question navigator</summary>
-          <p>Select a question to revisit it. Flagged questions are labeled.</p>
-          <div id="question-jump-list" class="jump-list" role="group" aria-label="Exam questions"></div>
-        </details>
-        <div class="submit-panel">
-          <p id="answered-count"></p>
-          <button type="button" id="submit-exam" class="primary">Submit Exam</button>
-        </div>
+        <div class="exam-controls"><button type="button" class="secondary" id="previous-question">Previous</button><button type="button" class="primary" id="next-question">Next</button></div>
+        <details class="question-list"><summary>Question navigator</summary><p>Select a question to revisit it. Answered and flagged questions are identified.</p><div id="question-jump-list" class="jump-list" role="group" aria-label="Exam questions"></div></details>
+        <div class="submit-panel"><p id="answered-count"></p><button type="button" id="submit-exam" class="primary">Submit exam</button></div>
       </div>
     </section>
 
     <section id="results-view" class="view" aria-labelledby="results-title" hidden>
-      <div class="view-heading">
-        <div><p class="eyebrow">Exam review</p><h1 id="results-title" tabindex="-1">Your results</h1></div>
-        <button type="button" class="secondary" data-view="home">Back to home</button>
-      </div>
-      <div id="results-storage-note" class="notice" role="status"></div>
-      <div id="results-content"></div>
+      <div class="view-heading"><div><p class="eyebrow">Exam review</p><h1 id="results-title" tabindex="-1">Your results</h1></div><button type="button" class="secondary" data-view="home">Home</button></div>
+      <div id="results-storage-note" class="notice" role="status"></div><div id="results-content"></div>
     </section>
 
     <section id="flashcards-view" class="view" aria-labelledby="flashcards-title" hidden>
-      <div class="view-heading">
-        <div><p class="eyebrow">75 original study cards</p><h1 id="flashcards-title" tabindex="-1">Flashcards</h1></div>
-        <button type="button" class="secondary" data-view="home">Back to home</button>
+      <div class="view-heading"><div><p id="flashcard-count" class="eyebrow">Original study cards</p><h1 id="flashcards-title" tabindex="-1">Flashcards</h1></div><button type="button" class="secondary" data-view="home">Home</button></div>
+      <div class="flashcard-tools"><label for="domain-filter">Study domain</label><select id="domain-filter"></select><label for="card-search">Find a card<input id="card-search" type="search" autocomplete="off" placeholder="Search terms and definitions"></label>
+        <label for="card-status-filter">Card status</label><select id="card-status-filter"><option value="all">All cards</option><option value="review">Needs review</option><option value="known">Marked as known</option></select>
+        <fieldset class="direction-options"><legend>Study direction:</legend><label><input type="radio" name="card-direction" value="term-definition"> Term first</label><label><input type="radio" name="card-direction" value="definition-term"> Definition first</label></fieldset><button type="button" class="secondary" id="shuffle-cards">Shuffle cards</button>
       </div>
-      <div class="flashcard-tools">
-        <label for="domain-filter">Study domain</label>
-        <select id="domain-filter"></select>
-        <fieldset class="direction-options">
-          <legend>Study Direction:</legend>
-          <label><input type="radio" name="card-direction" value="term-definition"> Term First</label>
-          <label><input type="radio" name="card-direction" value="definition-term"> Definition First</label>
-        </fieldset>
-        <button type="button" class="secondary" id="shuffle-cards">Shuffle cards</button>
-      </div>
-      <p id="card-preference-note" class="notice" role="status" hidden></p>
-      <p id="card-progress" class="progress-label" aria-live="polite"></p>
-      <article id="flashcard" class="flashcard" aria-labelledby="card-side-label">
-        <p id="card-domain" class="eyebrow"></p>
-        <p id="card-side-label" class="card-side"></p>
-        <h2 id="card-content"></h2>
-      </article>
-      <div class="exam-controls card-controls">
-        <button type="button" class="secondary" id="previous-card">Previous Card</button>
-        <button type="button" class="secondary" id="flip-card" aria-pressed="false">Flip Card</button>
-        <button type="button" class="primary" id="next-card">Next Card</button>
-      </div>
+      <p id="card-preference-note" class="notice" role="status" hidden></p><p id="card-progress" class="progress-label" aria-live="polite"></p>
+      <article id="flashcard" class="flashcard" aria-labelledby="card-side-label"><p id="card-domain" class="eyebrow"></p><p id="card-side-label" class="card-side"></p><h2 id="card-content"></h2></article>
+      <div class="exam-controls card-controls"><button type="button" class="secondary" id="previous-card">Previous card</button><button type="button" class="secondary" id="flip-card" aria-pressed="false">Flip card</button><button type="button" class="primary" id="next-card">Next card</button><button type="button" class="secondary" id="mark-card-mastered" aria-pressed="false">Mark as known</button></div>
       <p class="hint">Use the buttons with a keyboard or touch. Card content is announced when you move or flip a card.</p>
     </section>
+
+    <section id="glossary-view" class="view" aria-labelledby="glossary-title" hidden>
+      <div class="view-heading"><div><p class="eyebrow">Study reference</p><h1 id="glossary-title" tabindex="-1">Glossary</h1></div><button type="button" class="secondary" data-view="home">Home</button></div>
+      <label for="glossary-search">Search terms<input id="glossary-search" type="search" autocomplete="off" placeholder="Search the glossary"></label>
+      <p id="glossary-count" class="progress-label" aria-live="polite"></p><div id="glossary-list" class="glossary-list"></div>
+    </section>
+
+    <section id="statistics-view" class="view" aria-labelledby="statistics-title" hidden>
+      <div class="view-heading"><div><p class="eyebrow">Evidence with context</p><h1 id="statistics-title" tabindex="-1">Disability statistics</h1></div><button type="button" class="secondary" data-view="home">Home</button></div>
+      <p class="intro">Statistics describe populations and methods, not an individual person’s ability or access needs. Each figure below includes its source, year, scope, and limitations.</p>
+      <div class="stat-grid">
+        <article class="stat-card"><p class="stat-value">1.3 billion</p><h2>People worldwide</h2><p>The World Health Organization estimates that about 1.3 billion people, or 16% of the global population, experience significant disability. That is approximately one in six people.</p><p class="source-note"><strong>Source and scope:</strong> WHO, <cite>Disability and health</cite> fact sheet (2023); global estimate of significant disability. The “one in six” phrasing is a rounded restatement of the same 16% figure, not a separate measurement.</p><a href="https://www.who.int/news-room/fact-sheets/detail/disability-and-health" target="_blank" rel="noopener noreferrer">Read the WHO fact sheet <span class="sr-only">(opens in a new tab)</span></a></article>
+        <article class="stat-card"><p class="stat-value">Almost $10 per $1</p><h2>Illustrative return estimate</h2><p>WHO cites an estimate of almost US$10 in return for each US$1 spent on implementing disability-inclusive prevention and care for noncommunicable diseases.</p><p class="source-note"><strong>Source and scope:</strong> WHO, <cite>Disability and health</cite> fact sheet (2023); a broad estimate about disability-inclusive NCD prevention and care, not a guaranteed return or a forecast for a particular program.</p><a href="https://www.who.int/news-room/fact-sheets/detail/disability-and-health" target="_blank" rel="noopener noreferrer">Read the WHO fact sheet <span class="sr-only">(opens in a new tab)</span></a></article>
+      </div>
+      <p class="notice">Statistics are shown only when a reputable source and scope can be stated. Different definitions and data methods can produce different estimates; do not combine unlike measures or treat population figures as an individual profile.</p>
+    </section>
+
+    <section id="progress-view" class="view" aria-labelledby="progress-title" hidden>
+      <div class="view-heading"><div><p class="eyebrow">Stored only in this browser</p><h1 id="progress-title" tabindex="-1">Progress and review</h1></div><button type="button" class="secondary" data-view="home">Home</button></div>
+      <div id="progress-summary" class="choice-grid"></div>
+      <div class="result-tools"><label for="progress-domain">Filter missed questions by domain<select id="progress-domain"></select></label><button type="button" class="secondary" id="review-missed">Review missed questions</button></div>
+      <h2>Recent attempts</h2><div id="attempt-history"></div>
+      <p class="hint">Progress is based only on completed exams saved in this browser. Quick-quiz answers are not saved as exam results.</p>
+    </section>
+
+    <section id="review-view" class="view" aria-labelledby="review-title" hidden>
+      <div class="view-heading"><div><p class="eyebrow">Practice again</p><h1 id="review-title" tabindex="-1">Review missed questions</h1></div><button type="button" class="secondary" data-view="progress">Back to progress</button></div>
+      <p id="review-summary" class="notice" role="status"></p><div id="missed-list"></div>
+      <button type="button" class="primary" id="start-missed-quiz" hidden>Practice these questions</button>
+    </section>
+
+    <section id="resources-view" class="view" aria-labelledby="resources-title" hidden>
+      <div class="view-heading"><div><p class="eyebrow">Continue learning</p><h1 id="resources-title" tabindex="-1">References and resources</h1></div><button type="button" class="secondary" data-view="home">Home</button></div>
+      <p class="intro">These primary and authoritative resources informed study scope. Open external references in a new tab.</p>
+      <div id="resource-list" class="resource-list"></div>
+    </section>
+
+    <section id="data-view" class="view" aria-labelledby="data-title" hidden>
+      <div class="view-heading"><div><p class="eyebrow">Your browser, your choice</p><h1 id="data-title" tabindex="-1">My data and privacy</h1></div><button type="button" class="secondary" data-view="home">Home</button></div>
+      <div id="data-status" class="notice" role="status"></div>
+      <p>Saved attempts are stored in local browser storage only. Export a backup before clearing browser data or moving to another device. Export files contain your scores, answers, and attempt dates.</p>
+      <div class="result-tools"><button type="button" class="primary" id="export-data">Export my results</button><label class="file-picker" for="import-data">Import results from a JSON backup<input id="import-data" type="file" accept="application/json,.json"></label><button type="button" class="danger" id="clear-data">Clear all saved results</button></div>
+      <p id="data-feedback" class="notice" role="status" hidden></p>
+      <p class="hint">Import validates the file and merges valid attempts with saved attempts. No data is uploaded. This site makes no analytics or results-collection requests.</p>
+    </section>
   </main>
-  <footer class="site-footer">
-    <div class="shell"><p>This independent study resource does not replace official preparation materials or the current IAAP CPACC Body of Knowledge.</p></div>
-  </footer>
+  <footer class="site-footer"><div class="shell"><p>This independent study resource does not replace official preparation materials or the current IAAP CPACC Body of Knowledge.</p></div></footer>
   <div id="live-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
   <script src="questions.js"></script>
+  <script src="expanded-questions.js"></script>
   <script src="flashcards.js"></script>
   <script src="app.js"></script>
 </body>
