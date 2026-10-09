@@ -5,41 +5,23 @@
   var questions = [];
   var answerKey = 0;
   var sources = {
-    iaap: {
+    iaapSample: {
+      title: 'IAAP CPACC Sample Exam Questions',
+      year: 'IAAP reference',
+      scope: 'Official sample items consulted for scope and format only; no question wording is reproduced.',
+      url: 'https://www.accessibilityassociation.org/cpacc-sample-exam-questions'
+    },
+    iaapOutline: {
+      title: 'IAAP CPACC Certification Content Outline',
+      year: 'IAAP reference',
+      scope: 'Official outline of CPACC knowledge areas and exam scope.',
+      url: 'https://www.accessibilityassociation.org/cpacc-certification-content-outline'
+    },
+    iaapBok: {
       title: 'IAAP CPACC Body of Knowledge, October 2023',
       year: 2023,
       scope: 'CPACC competencies across disability, accessibility and universal design, and standards and management.',
       url: 'https://www.accessibilityassociation.org/sfsites/c/resource/CPACCBoK'
-    },
-    wcag: {
-      title: 'W3C Web Content Accessibility Guidelines (WCAG) 2.2',
-      year: 2023,
-      scope: 'Normative web-content accessibility principles, guidelines, and success criteria.',
-      url: 'https://www.w3.org/TR/WCAG22/'
-    },
-    ud: {
-      title: 'The Center for Universal Design, Principles of Universal Design',
-      year: 1997,
-      scope: 'The seven principles and related design guidelines; a design framework, not a substitute for accessibility requirements.',
-      url: 'https://design.ncsu.edu/research/center-for-universal-design/'
-    },
-    crpd: {
-      title: 'United Nations Convention on the Rights of Persons with Disabilities',
-      year: 2006,
-      scope: 'International human-rights treaty text, including accessibility, participation, and equal recognition before the law.',
-      url: 'https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-persons-disabilities'
-    },
-    ada: {
-      title: 'U.S. Department of Justice, Americans with Disabilities Act',
-      year: 1990,
-      scope: 'U.S. federal civil-rights law; application depends on statutory coverage and legal context.',
-      url: 'https://www.ada.gov/law-and-regs/ada/'
-    },
-    section508: {
-      title: 'U.S. Access Board, Section 508 Standards',
-      year: 2017,
-      scope: 'Accessibility requirements for covered U.S. federal information and communication technology.',
-      url: 'https://www.access-board.gov/ict/'
     }
   };
 
@@ -58,7 +40,7 @@
         options: options,
         answer: answer,
         explanation: row.explanation,
-        sourceId: sourceId,
+        sourceId: 'iaapBok',
         sourceSection: row.section
       });
       answerKey += 1;
