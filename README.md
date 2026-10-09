@@ -26,16 +26,13 @@ The standalone static site loads its own relative JavaScript and CSS assets and 
 
 ## Content and sources
 
-Original questions have an ID, domain, topic, difficulty, question type, explanation, and source reference. The expanded bank includes questions across disability models and functional access needs; assistive technology and communication; universal and inclusive design; WCAG principles and conformance; sensory alternatives and interaction; international frameworks and U.S. laws; and accessibility management. Distractor positions are shuffled per quiz or exam. The authoring key positions in the expanded bank are distributed across A–D.
+Original questions have an ID, domain, topic, difficulty, question type, explanation, and an IAAP source reference. The expanded bank includes questions across disability models and functional access needs; assistive technology and communication; universal and inclusive design; accessibility principles and conformance; sensory alternatives and interaction; international frameworks and laws; and accessibility management. Distractor positions are shuffled per quiz or exam. The authoring key positions in the expanded bank are distributed across A–D.
 
-The question set is for study, not an official representation of the current test form. Consult current IAAP materials for definitive competency scope, exam format, weighting, and policies. Source references and their scope are included in question review. Key sources include:
+The question set is for study, not an official representation of the current test form. Consult current IAAP materials for definitive competency scope, exam format, weighting, and policies. These are the only source references used by this study tool:
 
-- [IAAP CPACC Body of Knowledge (October 2023)](https://www.accessibilityassociation.org/sfsites/c/resource/CPACCBoK) and the [CPACC content outline](https://www.accessibilityassociation.org/cpacc-certification-content-outline).
-- [IAAP CPACC sample questions](https://www.accessibilityassociation.org/cpacc-sample-exam-questions) (format and scope only; no wording reproduced).
-- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/).
-- [UN Convention on the Rights of Persons with Disabilities](https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-persons-disabilities).
-- [U.S. Department of Justice ADA law and regulations](https://www.ada.gov/law-and-regs/ada/) and [U.S. Access Board ICT / Section 508 resources](https://www.access-board.gov/ict/).
-- [WHO, Disability and health](https://www.who.int/news-room/fact-sheets/detail/disability-and-health). The statistics page states the WHO global estimate of 1.3 billion / 16% (2023 fact sheet) and the separately scoped illustrative estimate for disability-inclusive NCD prevention and care. They are not predictions for an individual program.
+- [IAAP CPACC sample exam questions](https://www.accessibilityassociation.org/cpacc-sample-exam-questions) (scope and format only; no wording reproduced).
+- [IAAP CPACC certification content outline](https://www.accessibilityassociation.org/cpacc-certification-content-outline).
+- [IAAP CPACC Body of Knowledge – October 2023](https://www.accessibilityassociation.org/sfsites/c/resource/CPACCBoK).
 
 ## Update content
 
